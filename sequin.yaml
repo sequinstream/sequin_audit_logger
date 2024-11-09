@@ -1,0 +1,55 @@
+change_capture_pipelines:
+  - name: users_to_sequin_events
+    filters: []
+    destination_database: sequin_prod
+    source_database: sequin_prod
+    actions:
+      - insert
+      - update
+      - delete
+    destination_table_name: sequin_events
+    destination_table_schema: public
+    source_table_name: users
+    source_table_schema: sequin_config
+  - name: http_pull_to_sequin_events
+    filters: []
+    destination_database: sequin_prod
+    source_database: sequin_prod
+    actions:
+      - insert
+      - update
+      - delete
+    destination_table_name: sequin_events
+    destination_table_schema: public
+    source_table_name: http_pull_consumers
+    source_table_schema: sequin_config
+  - name: accounts_to_sequin_events
+    filters: []
+    destination_database: sequin_prod
+    source_database: sequin_prod
+    actions:
+      - insert
+      - update
+      - delete
+    destination_table_name: sequin_events
+    destination_table_schema: public
+    source_table_name: accounts
+    source_table_schema: sequin_config
+consumer_groups:
+  - name: sequin_prod_audit_logger
+    status: active
+    filters: []
+    max_ack_pending: 10000
+    sequence: sequin_prod.public.sequin_events
+    group_column_attnums:
+      - 3
+      - 4
+      - 7
+    consumer_start:
+      position: beginning
+sequences:
+  - name: sequin_prod.public.sequin_events
+    database: sequin_prod
+    sort_column_name: seq
+    table_name: sequin_events
+    table_schema: public
