@@ -16,8 +16,6 @@ defmodule SequinAuditLogger.ConsumerLog do
   end
 
   def from_sequin_event(%SequinEvent{} = event) do
-    dbg(event)
-
     kind =
       if event.source_table_name == "http_pull_consumers",
         do: "http_pull_consumer",
