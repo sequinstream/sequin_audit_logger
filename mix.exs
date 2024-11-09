@@ -24,7 +24,7 @@ defmodule SequinAuditLogger.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:off_broadway_sequin, github: "sequinstream/off_broadway_sequin"},
+      {:off_broadway_sequin, "~> 0.1.3"},
       {:ecto, "~> 3.12"},
       {:postgrex, ">= 0.0.0"},
       {:ecto_sql, "~> 3.10"},
