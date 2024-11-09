@@ -5,13 +5,13 @@ set -euo pipefail
 
 migrate() {
   echo "Starting migrations"
-  ./prod/rel/sequin/bin/sequin eval "SequinAuditLogger.Release.migrate"
+  ./prod/rel/sequin_audit_logger/bin/sequin_audit_logger eval "SequinAuditLogger.Release.migrate"
   echo 'Migrations complete'
 }
 
 start_application() {
   echo "Starting the app"
-  PHX_SERVER=true ./prod/rel/sequin/bin/sequin start
+  PHX_SERVER=true ./prod/rel/sequin_audit_logger/bin/sequin_audit_logger start
 }
 
 # Main script execution starts here

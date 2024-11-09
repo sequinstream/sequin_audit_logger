@@ -28,6 +28,7 @@ defmodule SequinAuditLogger.MixProject do
       {:ecto, "~> 3.12"},
       {:postgrex, ">= 0.0.0"},
       {:ecto_sql, "~> 3.10"},
+      {:aws_rds_castore, "~> 1.2.0"},
       {:mix_test_interactive, "~> 2.0", only: :dev, runtime: false}
     ]
   end
